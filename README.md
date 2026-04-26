@@ -79,7 +79,7 @@ cd /path/to/xampp/htdocs
 
 # Step 2: Clone or move the project folder
 # (If using Git)
-git clone https://github.com/yourusername/store_management.git
+git clone https://github.com/TechySakib/store_management.git
 
 # OR (If copying manually)
 mv /your/downloads/store_management .
