@@ -5,116 +5,96 @@ A comprehensive web-based sales management system designed to manage multiple re
 ## 📌 Features
 
 ### 🔐 Authentication
-- Customer and Employee Login System
-- Role-based access (Manager, Salesman, Customer)
+- Unified Login System for Customers and Employees
+- Role-based access control (Manager, Salesman, Customer)
 
 ### 🧑‍💼 Manager Module
-- Dashboard with key metrics
-- Add/View Employees
-- Add/View Stores
-- Add/View Products
-- Assign Employees to Stores
-- View Monthly Sales Reports
+- Administrative Dashboard
+- Employee Management (Add/View/Delete)
+- Store Management
+- Product Management
+- Employee-to-Store Assignments
+- Sales Analytics and Reports
 
 ### 👨‍💼 Employee (Salesman) Module
-- Dashboard
-- View Assigned Stores
-- Manage Sales Records
-- View Personal Sales History
+- Personal Dashboard
+- Assigned Store Details
+- Real-time Sales Recording
+- Personal Sales History
 
 ### 👥 Customer Module
-- Register/Login
-- Browse Products
-- Submit Reviews
-- View Purchase History
+- Account Registration
+- Product Browsing with Detailed Popups
+- Product Reviews and Ratings
+- Shopping Cart and Purchase History
 
 ## 🧰 Technologies Used
-- **Frontend**: HTML, CSS
-- **Backend**: PHP
-- **Database**: MySQL (`chain_of_store`)
-- **Architecture**: Role-Based Access Control
+- **Frontend**: HTML5, CSS3 (Vanilla), FontAwesome
+- **Backend**: PHP (PDO & MySQLi Hybrid)
+- **Database**: MySQL
+- **Design**: Modern UI with Glassmorphism and Responsive Layouts
 
 ## 🗂️ Project Structure
-store_management/
 
-<pre>store_management/
-├── includes/                         # Configuration and core scripts
-│   ├── db_connect.php                # MySQL database connection
-│   └── auth.php                      # Authentication and session handling
+<pre>
+├── includes/                         # Core components
+│   ├── db.php                        # Centralized PDO/MySQLi connection
+│   └── footer.php                     # Shared footer template
 │
-├── manager/                          # Manager (Admin-level) functionalities
+├── manager/                          # Administrative functionalities
 │   ├── manager_dashboard.php
 │   ├── add_employee.php
 │   ├── view_employees.php
 │   ├── add_store.php
-│   ├── view_stores.php
 │   ├── add_product.php
 │   ├── view_products.php
 │   ├── assign_employee_store.php
 │   └── sales_reports.php
 │
-├── employee/                         # Salesman role functionalities
+├── employee/                         # Salesman functionalities
 │   ├── employee_dashboard.php
-│   ├── view_assigned_stores.php
-│   ├── manage_sales.php
-│   └── view_sales_history.php
+│   ├── view_assigned_store.php
+│   ├── record_sales.php
+│   └── view_sales.php
 │
-├── customer/                         # Customer-facing pages
+├── customer/                         # Customer portal
 │   ├── customer_dashboard.php
 │   ├── browse_products.php
-│   ├── submit_review.php
-│   └── purchase_history.php
+│   ├── review_product.php
+│   ├── purchase_history.php
+│   └── cart.php
 │
-├── sql/                              # SQL files
-│   └── chain_of_store.sql            # (Optional) SQL file to create and populate the database
-│
-├── register.php                      # Global customer registration
-├── login.php                         # Login page for all roles
-├── logout.php                        # Ends session and redirects to login
-├── session.php                       # Manages active session variables
-└── README.md                         # Project documentation</pre>  
+├── login.php                         # Unified login
+├── register.php                      # Customer registration
+├── logout.php                        # Session termination
+├── chain_of_store.sql                # Database schema
+└── README.md                         # Documentation
+</pre>
 
-# Step 1: Move to your server root (htdocs for XAMPP)
-cd /path/to/xampp/htdocs
+## 🚀 Installation & Setup
 
-# Step 2: Clone or move the project folder
-# (If using Git)
-git clone https://github.com/TechySakib/store_management.git
+### Step 1: Server Environment
+Move the project folder to your local server root (e.g., `htdocs` for XAMPP or `www` for WAMP).
 
-# OR (If copying manually)
-mv /your/downloads/store_management .
+### Step 2: Database Setup
+1. Open **phpMyAdmin**.
+2. Create a new database named `chain_of_store`.
+3. Select the database and go to the **Import** tab.
+4. Upload and import the `chain_of_store.sql` file located in the root directory.
 
-# Step 3: Launch phpMyAdmin in your browser
-# Go to:
-http://localhost/phpmyadmin/
+### Step 3: Configuration
+Edit `includes/db.php` if your MySQL credentials differ from the defaults:
+```php
+$host = '127.0.0.1';
+$db   = 'chain_of_store';
+$user = 'root';
+$pass = ''; // Set your password here
+```
 
-# Step 4: Create a new database
-# In phpMyAdmin:
-# - Click "New"
-# - Name it: chain_of_store
-# - Click "Create"
+### Step 4: Run the Project
+Open your browser and navigate to:
+`http://localhost/Chain-of-Stores-Sale-Management-System/`
 
-# Step 5: Import the SQL file
-# In phpMyAdmin:
-# - Select the `chain_of_store` database
-# - Go to the "Import" tab
-# - Choose the .sql file (e.g., store_management/sql/chain_of_store.sql)
-# - Click "Go"
-
-# Step 6: Configure database connection
-# Edit the db_connect.php file:
-nano store_management/includes/db_connect.php
-
-# Make sure your credentials look like this (for XAMPP):
-# $conn = new mysqli("localhost", "root", "", "chain_of_store");
-
-# Step 7: Start Apache and MySQL (if not already running)
-# You can use the XAMPP Control Panel or:
-
-/path/to/xampp/xampp startapache
-/path/to/xampp/xampp startmysql
-
-# Step 8: Run the project
-# Open your browser and go to:
-http://localhost/store_management/
-
+## 🔐 Default Credentials (Test Accounts)
+- **Manager**: `manager@store.com` / `password`
+- **Salesman**: `salesman@store.com` / `password`
